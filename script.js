@@ -9,21 +9,21 @@ let tie = "It is a tie"
 //Player Input 
 let playerSelection = prompt("Enter 'Rock', 'Paper' or 'Scissors'");
 if (playerSelection == 'Rock' || playerSelection == 'Paper' || playerSelection == 'Scissors') {
-    console.log(`You Chose: ${playerSelection}`);
+  console.log(`You Chose: ${playerSelection}`);
 } else {
-    console.log("Error, Try Again");
+  console.log("Error, Try Again");
 }
 
 function computerSelection() {
-    let random = Math.random();
-    if (random <= 0.3333) {
-      return "Paper";
-    } else if (random >= 0.6666) {
-      return "Rock";
-    } else {
-      return "Scissors";
-    }
+  let random = Math.random();
+  if (random <= 0.3333) {
+    return "Paper";
+  } else if (random >= 0.6666) {
+    return "Rock";
+  } else {
+    return "Scissors";
   }
+}
 
 //Random Computer Choice
 /* function computerSelection(arr) {
@@ -41,32 +41,44 @@ console.log('Computer Chose: ' + result);
 
 
 function playRound(playerSelection, comp) {
-    
-    if (
+
+  if (
     (playerSelection == 'Rock' && comp == 'Scissors') ||
     (playerSelection == 'Paper' && comp == 'Rock') ||
     (playerSelection == 'Scissors' && comp == 'Paper')
-    ) {
-        playerScore++;
-        return win;
-    }
-    else if  (playerSelection === comp) {
-        console.log("Tie Game!");
-    }
-    else {
-        computerScore++;
-        console.log("Computer Wins!");
-    }
-    //console.log("Refresh Page to Play Again!");
+  ) {
+    playerScore++;
+    return win;
+  }
+  else if (playerSelection === comp) {
+    console.log("Tie Game!");
+  }
+  else {
+    computerScore++;
+    console.log("Computer Wins!");
+  }
+  //console.log("Refresh Page to Play Again!");
 }
 
 playRound();
 
 
+
+
 for(var i=0;i<5;i++){
     let playerSelection = prompt("Pick a move");
-    const comp = computerSelection()
-    console.log(playRound(playerSelection, comp))
-    console.log("your score = " + playerScore);
+    const comp = computerSelection();
+    playRound(playerSelection, comp);
+    console.log('Player Chose: ' + playerSelection);
+    console.log('Computer Chose: ' + comp);
+    console.log("Your score = " + playerScore);
     console.log("Computer's score = " + computerScore);
   }
+  
+const rockBtn = document.getElementById('rockBtn')
+const paperBtn = document.getElementById('paperBtn')
+const scissorsBtn = document.getElementById('scissorsBtn')
+
+rockBtn.addEventListener('click', () => handleClick('Rock'))
+paperBtn.addEventListener('click', () => handleClick('Paper'))
+scissorsBtn.addEventListener('click', () => handleClick('Scissors'))
