@@ -1,13 +1,97 @@
-const choices = ['Rock', 'Paper', 'Scissors'];
+/* const choices = ['Rock', 'Paper', 'Scissors'];
 //to read computer choice as a string
 //let comp="";
 let playerScore = parseInt(0);
 let computerScore = parseInt(0);
 let win = "You win"
 let lose = "You lose"
-let tie = "It is a tie"
+let tie = "It is a tie" */
+
+//DOM Method
+const playerTxt = document.querySelector('.playerTxt');
+const computerTxt = document.querySelector('.computerTxt');
+const finalTxt = document.querySelector('.finalTxt');
+const gameBtns = document.querySelectorAll('.gameBtns');
+const playerScore = document.querySelector('.playerScore');
+const computerScore = document.querySelector('.computerScore');
+
+
+let pScore = 0;
+let cScore = 0;
+let player;
+let computer;
+let final;
+
+
+
+gameBtns.forEach(button => button.addEventListener("click", () =>{
+
+
+player = button.textContent;
+computerTurn();
+playerTxt.textContent=`You: ${player}`;
+computerTxt.textContent=`Computer: ${computer}`;
+
+finalTxt.textContent= checkWinner(); //invoke function
+playerScore.textContent= `Your Score: ${pScore}`;
+computerScore.textContent= `Computer Score: ${cScore}`;
+} ));
+
+function computerTurn(){
+  const randNum = Math.floor(Math.random() * 3) + 1; //gives random number between 1 and 3
+
+  switch(randNum){
+    case 1:
+      computer = "Rock";
+      break;
+    case 2:
+      computer = "Paper";
+      break;
+    case 3:
+      computer = "Scissors";
+      break;
+  }
+
+}
+
+function checkWinner(){
+  if (
+    (player == 'Rock' && computer == 'Scissors') ||
+    (player == 'Paper' && computer == 'Rock') ||
+    (player == 'Scissors' && computer == 'Paper')
+  ) {
+    pScore++;
+    return "You Win!";
+  }
+  else if (player === computer) {
+    return "It's a Tie!";
+    }
+  
+  else {
+    cScore++;
+    return "You Lose!"
+  }
+  
+}
+
+
+/* if(player === computer){
+    return "It's a Tie!";
+  }
+  else if(computer == "Rock"){
+    pScore++;
+    return(player=="Paper") ?  "You Win!":"You Lose!"
+  }
+  else if(computer == "Paper"){
+    cScore++;
+    return(player=="Scissors") ? "You Win!": "You Lose!"
+  }
+  else if(computer == "Scissors"){
+    return(player=="Rock") ? "You Win!": "You Lose!"
+  } */
+
 //Player Input 
-let playerSelection = prompt("Enter 'Rock', 'Paper' or 'Scissors'");
+/* let playerSelection = prompt("Enter 'Rock', 'Paper' or 'Scissors'");
 if (playerSelection == 'Rock' || playerSelection == 'Paper' || playerSelection == 'Scissors') {
   console.log(`You Chose: ${playerSelection}`);
 } else {
@@ -24,7 +108,7 @@ function computerSelection() {
     return "Scissors";
   }
 }
-
+ */
 //Random Computer Choice
 /* function computerSelection(arr) {
 
@@ -35,7 +119,7 @@ function computerSelection() {
     return item.toString();
 } */
 
-const array = ['Rock', 'Paper', 'Scissors'];
+/* const array = ['Rock', 'Paper', 'Scissors'];
 const result = computerSelection(array);
 console.log('Computer Chose: ' + result);
 
@@ -74,11 +158,6 @@ for(var i=0;i<5;i++){
     console.log("Your score = " + playerScore);
     console.log("Computer's score = " + computerScore);
   }
+ */
   
-const rockBtn = document.getElementById('rockBtn')
-const paperBtn = document.getElementById('paperBtn')
-const scissorsBtn = document.getElementById('scissorsBtn')
-
-rockBtn.addEventListener('click', () => handleClick('Rock'))
-paperBtn.addEventListener('click', () => handleClick('Paper'))
-scissorsBtn.addEventListener('click', () => handleClick('Scissors'))
+  
