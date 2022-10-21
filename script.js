@@ -74,6 +74,13 @@ function checkWinner(){
   
 }
 
+document.getElementById('resetBtn').addEventListener('click', function(){
+
+  location.reload();
+  return false;
+
+});
+
 
 /* if(player === computer){
     return "It's a Tie!";
